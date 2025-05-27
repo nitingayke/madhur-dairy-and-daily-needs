@@ -7,8 +7,8 @@ export default function NotFound() {
     const navigate = useNavigate();
 
     return (
-        <div className={`flex flex-col items-center justify-center h-[80vh] text-center px-4 ${
-            theme === 'light' ? 'text-gray-800' : 'text-gray-100'
+        <div className={`h-screen w-full flex flex-col items-center justify-center text-center px-4 ${
+            theme === 'light' ? 'text-gray-800 bg-white' : 'text-gray-100 bg-[#121212]'
         }`}>
             <h1 className="text-6xl font-bold mb-4">404</h1>
             <p className="text-xl md:text-2xl mb-2">Oops! Page not found.</p>

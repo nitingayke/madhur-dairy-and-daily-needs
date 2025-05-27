@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 
 export const UserAuthContext = createContext();
 export const AdminAuthContext = createContext();
@@ -11,9 +11,7 @@ export default function AuthProvider({ children }) {
   );
 
   const admin = localStorage.getItem("Admin");
-  const [authAdmin, setAuthAdmin] = useState(
-    admin ? JSON.parse(admin) : undefined
-  );
+  const [authAdmin, setAuthAdmin] = useState(admin ? JSON.parse(admin) : undefined);
 
   const value1 = useMemo(() => ({
     authAdmin,
