@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 export default function UserLogin() {
   const navigate = useNavigate();
+ 
 
   const [formData, setFormData] = useState({
     email: "",
@@ -95,7 +96,7 @@ export default function UserLogin() {
 
           <div className="mt-5 text-sm text-gray-700 flex flex-col sm:flex-row items-center justify-center">
             <p className="mr-1">Don't have an account?</p>
-            <Link to="/u/signup" className="text-yellow-600 hover:underline font-medium">
+            <Link to="/signup" className="text-yellow-600 hover:underline font-medium">
               Sign up
             </Link>
           </div>

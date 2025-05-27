@@ -108,7 +108,7 @@ export default function AdminSignup() {
 
           <div className="mt-4 flex flex-col sm:flex-row items-center justify-center text-center gap-1">
             <p className="text-sm font-medium">Already have an admin account?</p>
-            <Link to="/admin/login" className="text-yellow-600 hover:underline text-sm font-semibold">
+            <Link to="/login" className="text-yellow-600 hover:underline text-sm font-semibold">
               Login here
             </Link>
           </div>
