@@ -1,46 +1,45 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export default function P_Login() {
+export default function UserLogin() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
-      ...prevData, //creates a shallow copy of the previous state object.
-      [name]: value, // dynamically sets the property with the name stored in the name variable to the value stored in the value variable.
+      ...prevData, 
+      [name]: value, 
     }));
   };
 
   let handleFormSumbit = async (e) => {
-    console.log(" Login form submitted");
-
     e.preventDefault();
-    await axios
-      .post("http://localhost:9000/u/login", formData)
-      .then((res) => {
-        console.log("Responce Data : ", res.data);
-        if (res.data) {
-          localStorage.setItem("User", JSON.stringify(res.data.user));
-          toast.success("Login Successfully");
-          navigate("/home");
-          window.location.reload();
-        }
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-        toast.error("Invalid email or password");
-      });
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post("http://localhost:9000/u/login", formData);
+
+      if(response.status === 200) {
+        localStorage.setItem("User", JSON.stringify(response.data.user));
+        navigate("/home");
+      } else {
+        toast.error("Not Logged in, please try again!");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error.message || "Not Logged in, please try again!");
+    } finally {
+      setIsLoading(false);
+    }
 
     setFormData({
       email: "",
@@ -51,7 +50,7 @@ export default function P_Login() {
     <div className="flex min-h-screen w-full items-center justify-center  px-4 py-10 bg-no-repeat bg-cover bg-center "
       style={{
         backgroundImage: `url('https://www.shutterstock.com/image-photo/fresh-organic-dairy-products-butter-260nw-1921889378.jpg')`,
-        backgroundColor: "#fdf6e3", // fallback color for traffic background
+        backgroundColor: "#fdf6e3", 
       }}>
       <div className="rounded-3xl bg-opacity-80 backdrop-blur-md  border border-yellow-300 shadow-2xl bg-white/90  px-8 py-12 w-full max-w-lg transition-all duration-300 hover:shadow-yellow-400 animate-fade-in">
         <form
@@ -106,7 +105,7 @@ export default function P_Login() {
               className="w-[98%]  font-bold tracking-wide"
               type="submit"
             >
-              🧈 Login
+              { isLoading ? "Loading..." : "Login"}
             </Button>
           </div>
 

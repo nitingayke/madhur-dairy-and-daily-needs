@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export default function Login() {
+export default function AdminLogin() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -33,9 +32,9 @@ export default function Login() {
         setTimeout(() => {
           window.location.reload();
         }, 2000);
-        // navigate("/home");
+        navigate("/home");
       }
-    } catch (error) {
+    } catch {
       toast.error("Invalid email or password");
     }
 
@@ -56,7 +55,7 @@ export default function Login() {
       <div className="w-full max-w-xl bg-opacity-80 backdrop-blur-md rounded-xl border border-yellow-700 p-8 shadow-2xl">
         <form className="flex flex-col items-center" onSubmit={handleFormSumbit}>
           <div className="flex flex-col items-center gap-2 mb-6">
-            <img src="https://chatgpt.com/backend-api/public_content/enc/eyJpZCI6Im1fNjgzNTRkYjY5MDdjODE5MTlkMDU3YTMwZTFlYWE5OTY6ZmlsZV8wMDAwMDAwMDZjYTA2MjMwOGQ1YTE4ZDQxOTg2OGM0YSIsInRzIjoiNDg1NjQ1IiwicCI6InB5aSIsInNpZyI6IjhlOTJjNDAwNDczZjk4NzE1YmIzZDA3NWFiNTJjODQzNTFmNDFmYTBmY2VlYjdkNzVhMDVhNTI4NTg0MWYyNDYiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsfQ==" alt="madhur logo" className="rounded-2xl shadow-2xl shadow-gray-400 h-30 w-50 mb-5"/>
+            <img src="https://chatgpt.com/backend-api/public_content/enc/eyJpZCI6Im1fNjgzNTRkYjY5MDdjODE5MTlkMDU3YTMwZTFlYWE5OTY6ZmlsZV8wMDAwMDAwMDZjYTA2MjMwOGQ1YTE4ZDQxOTg2OGM0YSIsInRzIjoiNDg1NjQ1IiwicCI6InB5aSIsInNpZyI6IjhlOTJjNDAwNDczZjk4NzE1YmIzZDA3NWFiNTJjODQzNTFmNDFmYTBmY2VlYjdkNzVhMDVhNTI4NTg0MWYyNDYiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsfQ==" alt="madhur logo" className="rounded-2xl shadow-2xl shadow-gray-400 h-30 w-50 mb-5" />
             <h1 className="text-2xl sm:text-3xl font-bold text-yellow-800">Admin Login</h1>
           </div>
 

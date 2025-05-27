@@ -1,32 +1,35 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
 
-// Creating contexts for users and doctors
 export const UserAuthContext = createContext();
 export const AdminAuthContext = createContext();
 
 export default function AuthProvider({ children }) {
-  // Getting the current user from local storage
+
   const currUser = localStorage.getItem("User");
   const [authUser, setAuthUser] = useState(
     currUser ? JSON.parse(currUser) : undefined
   );
 
-  // Getting the current doctor from local storage
   const admin = localStorage.getItem("Admin");
   const [authAdmin, setAuthAdmin] = useState(
     admin ? JSON.parse(admin) : undefined
   );
 
+  const value1 = useMemo(() => ({
+    authAdmin,
+    setAuthAdmin
+  }), [authAdmin]);
+
+  const value2 = useMemo(() => ({
+    authUser,
+    setAuthUser
+  }), [authUser])
+
   return (
-    // Nesting the providers to make both contexts available to the children
-    <AdminAuthContext.Provider value={[authAdmin, setAuthAdmin]}>
-      <UserAuthContext.Provider value={[authUser, setAuthUser]}>
+    <AdminAuthContext.Provider value={value1}>
+      <UserAuthContext.Provider value={value2}>
         {children}
       </UserAuthContext.Provider>
     </AdminAuthContext.Provider>
   );
 }
-
-// Creating custom hooks to access user and doctor contexts easily
-export const useAdminAuth = () => useContext(AdminAuthContext);
-export const useUserAuth = () => useContext(UserAuthContext);

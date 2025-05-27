@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify"
 
-export default function U_SignUp() {
+export default function UserSignUp() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -24,8 +24,6 @@ export default function U_SignUp() {
 
   let handleFormSumbit = async (e) => {
     e.preventDefault();
-    console.log(" Signup form submitted");
-    // console.log("FormData : ",formData);
 
     await axios.post("http://localhost:9000/u/signup", formData)
       .then((res) => {
@@ -52,8 +50,8 @@ export default function U_SignUp() {
         backgroundImage: `url('https://www.shutterstock.com/image-photo/fresh-organic-dairy-products-butter-260nw-1921889378.jpg')`,
         backgroundColor: "#fdf6e3", // fallback color for traffic background
       }}
-      >
-        
+    >
+
       <div className="rounded-3xl border border-yellow-300 shadow-2xl bg-white/90 backdrop-blur-md px-8 py-6 w-full max-w-lg transition-all duration-300 hover:shadow-yellow-400 animate-fadeIn">
         <form
           action="/u/signup"
