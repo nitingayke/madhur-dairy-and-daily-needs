@@ -108,6 +108,13 @@ export default function UserSignUp() {
               Login
             </Link>
           </div>
+
+          <div className="mt-2 text-center text-sm text-gray-700">
+            Are you an admin?{" "}
+            <Link to="/admin/login" className="text-yellow-700 font-medium hover:underline">
+              Login here
+            </Link>
+          </div>
         </form>
       </div>
     </div>

@@ -53,9 +53,9 @@ export default function AdminSignup() {
             <img
               src="https://chatgpt.com/backend-api/public_content/enc/eyJpZCI6Im1fNjgzNTRkYjY5MDdjODE5MTlkMDU3YTMwZTFlYWE5OTY6ZmlsZV8wMDAwMDAwMDZjYTA2MjMwOGQ1YTE4ZDQxOTg2OGM0YSIsInRzIjoiNDg1NjQ1IiwicCI6InB5aSIsInNpZyI6IjhlOTJjNDAwNDczZjk4NzE1YmIzZDA3NWFiNTJjODQzNTFmNDFmYTBmY2VlYjdkNzVhMDVhNTI4NTg0MWYyNDYiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsfQ=="
               alt="madhur logo"
-              className="rounded-2xl shadow-2xl shadow-gray-400 h-30 w-50 mb-5"
+              className="rounded-2xl h-30 w-50 mb-5"
             />
-            <h1 className="text-2xl sm:text-3xl font-bold text-yellow-800">Admin Signup</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-yellow-800">Admin Login</h1>
           </div>
 
           <div className="w-full flex flex-col gap-4">
